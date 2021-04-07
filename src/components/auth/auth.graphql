@@ -1,0 +1,18 @@
+mutation Register($input: RegisterUserInput!) {
+    register(user: $input)
+}
+
+mutation Login($nickName: String!, $password: String!) {
+    login(username: $nickName, password: $password) {
+        accessToken,
+        refreshToken
+    }
+}
+
+query Me {
+    me {
+        nickName,
+        email,
+        description
+    }
+}

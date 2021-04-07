@@ -1,0 +1,71 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type LoginResponseSuccess {
+    accessToken: String!
+    refreshToken: String!
+}
+
+type Mutation {
+    login(password: String!, username: String!): LoginResponseSuccess!
+    register(user: RegisterUserInput!): Boolean!
+}
+
+type Post {
+    crowns: Float!
+    image: String!
+    message: String!
+    nickName: String!
+    timestamp: DateTime!
+}
+
+type Query {
+    me: User!
+    posts: [Post!]!
+}
+
+type User {
+    description: String!
+    email: String!
+    follower: [ObjectId!]!
+    following: [ObjectId!]
+    houseNumber: String!
+    locationType: LocationType!
+    nickName: String!
+    postalCode: String!
+    room: [ObjectId!]!
+    street: String!
+    telephoneNumber: String!
+    userType: UserType!
+}
+
+enum LocationType {
+    Bar
+    Cafe
+    Club
+    Restaurant
+    ShishaBar
+}
+
+enum UserType {
+    Location
+    Visitor
+}
+
+input RegisterUserInput {
+    email: String!
+    nickName: String!
+    password: String!
+    role: Float!
+}
+
+
+"The javascript `Date` as string. Type represents date and time as the ISO Date string."
+scalar DateTime
+
+"Mongo object id scalar type"
+scalar ObjectId
